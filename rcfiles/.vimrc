@@ -134,6 +134,8 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 " Set Colorscheme
+set t_Co=256
+set background=dark
 colorscheme solarized
 
 
