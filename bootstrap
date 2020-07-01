@@ -36,4 +36,12 @@ else
 	vim +PluginInstall +qall
 fi
 
+echo "Install tmux-themepack..."
+if [ -e "${HOME}/.tmux-themepack" ]; then
+	echo "    tmux-themepack already installed! Not doing anything."
+else
+	git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
+	vim +PluginInstall +qall
+fi
+
 echo "All done! Relog to see changes."
