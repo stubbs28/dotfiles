@@ -26,7 +26,14 @@ for file in $(find "${DOTFILES}/rcfiles/" -type f); do
 		echo "    Linking in ${BASENAME}..."
 		ln -sT "${file}" "${HOME}/${BASENAME}"
 	fi
-	echo
 done
+
+echo "Install Vundle..."
+if [ -e "${HOME}/.vim/bundle/Vundle.vim" ]; then
+	echo "    vundle already installed! Not doing anything."
+else
+	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	vim +PluginInstall +qall
+fi
 
 echo "All done! Relog to see changes."
