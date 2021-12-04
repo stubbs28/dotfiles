@@ -1,21 +1,42 @@
 #!/bin/bash
+DOTFILES="${HOME}/.local/dotfiles"
+DEPENDENCIES=("zsh" "batcat" "exa" "rg" "nvim" "kitty" "tmux")
 
-if [ "$PWD" != "${HOME}/.local/dotfiles" ]; then
-	echo "This script must be run from ${HOME}/.local/dotfiles"
+if [ "$PWD" != ${DOTFILES} ]; then
+	echo "this script must be run from ${DOTFILES}."
 	exit 1;
 else
-	echo "Bootstrapping to ${HOME}/.local/dotfiles..."
+	echo "bootstrapping to ${DOTFILES}..."
 fi
 echo
 
-DOTFILES="${HOME}/.local/dotfiles"
-
-if [ -e "${HOME}/.local/bin" ]; then
-	echo "${HOME}/.local/bin exists! Backing up..."
-	mv "${HOME}/.local/bin" "${HOME}/.local/bin.bckp"
+echo "check dependencies..."
+for dep in "${DEPENDENCIES[@]}"; do
+	if ! command -v ${d} &> /dev/null; then
+		missing=1 
+		echo "${dep} not installed." 
+	fi
+done
+if [ -n "${missing}" ]; then
+	echo "please install missing dependencies."
+	exit 1
 fi
 
-echo "Adding rcfiles..."
+echo "install oh-my-zsh..."
+if [ -e "${HOME}/.oh-my-zsh" ]; then
+	echo "    oh-my-zsh already installed! not doing anything."
+else
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
+
+echo "install tmux-themepack..."
+if [ -e "${HOME}/.tmux-themepack" ]; then
+	echo "    tmux-themepack already installed! not doing anything."
+else
+	git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
+fi
+
+echo "adding rcfiles..."
 for file in $(find "${DOTFILES}/rcfiles/" -type d); do
 	BASENAME=${file#"${DOTFILES}/rcfiles/"}
 	mkdir -p "${HOME}/${BASENAME}"
@@ -23,8 +44,8 @@ done
 for file in $(find "${DOTFILES}/rcfiles/" -type f); do
 	BASENAME=${file#"${DOTFILES}/rcfiles/"}
 	if [ -e "${HOME}/${BASENAME}" ]; then
-		echo "    ${BASENAME} already exists! Not doing anything."
-		echo "    To fix this, backup your file and run: "
+		echo "    ${BASENAME} already exists! not doing anything."
+		echo "    to fix this, backup your file and run: "
 		echo "    ln -sT ${file} ${HOME}/${BASENAME}"
 	else
 		echo "    Linking in ${BASENAME}..."
@@ -32,34 +53,7 @@ for file in $(find "${DOTFILES}/rcfiles/" -type f); do
 	fi
 done
 
-echo "Install oh-my-zsh"
-if [ -e "${HOME}/.oh-my-zsh" ]; then
-	echo "    oh-my-zsh already installed! Not doing anything."
-else
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-fi
+echo "installing vim plugins..."
+nvim +PluginInstall +qall
 
-echo "Install stickers.zsh-theme" 
-if [ -e "${HOME}/.oh-my-zsh/themes/stickers.zsh-theme" ]; then
-	echo "    stickers.zsh-theme already installed! Not doing anything."
-else
-	cp configs/stickers.zsh-theme ${HOME}/.oh-my-zsh/themes/stickers.zsh-theme
-fi
-
-echo "Install Vundle..."
-if [ -e "${HOME}/.vim/bundle/Vundle.vim" ]; then
-	echo "    vundle already installed! Not doing anything."
-else
-	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-	vim +PluginInstall +qall
-fi
-
-echo "Install tmux-themepack..."
-if [ -e "${HOME}/.tmux-themepack" ]; then
-	echo "    tmux-themepack already installed! Not doing anything."
-else
-	git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
-	vim +PluginInstall +qall
-fi
-
-echo "All done! Relog to see changes."
+echo "all done! relog to see changes."

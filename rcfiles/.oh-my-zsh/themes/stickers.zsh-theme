@@ -86,7 +86,9 @@ prompt_virtualenv() {
 
 # Kube: current kubernetes context
 prompt_kube() {
-	context="$(kubectl config current-context)"
+	if hash kubectl 2>/dev/null; then
+		context="$(kubectl config current-context)"
+	fi
 	[[ -z "$context" ]] && return
 	prompt_segment green black "$context"
 }
