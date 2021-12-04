@@ -16,8 +16,12 @@ if [ -e "${HOME}/.local/bin" ]; then
 fi
 
 echo "Adding rcfiles..."
+for file in $(find "${DOTFILES}/rcfiles/" -type d); do
+	BASENAME=${file#"${DOTFILES}/rcfiles/"}
+	mkdir -p "${HOME}/${BASENAME}"
+done
 for file in $(find "${DOTFILES}/rcfiles/" -type f); do
-	BASENAME=$(basename ${file})
+	BASENAME=${file#"${DOTFILES}/rcfiles/"}
 	if [ -e "${HOME}/${BASENAME}" ]; then
 		echo "    ${BASENAME} already exists! Not doing anything."
 		echo "    To fix this, backup your file and run: "

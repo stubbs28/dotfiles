@@ -75,7 +75,7 @@ source $ZSH/oh-my-zsh.sh
 source <(kubectl completion zsh)
 
 # remap tools
-alias cat='bat'
+alias cat='batcat'
 alias ls='exa'
 alias grep='rg'
 alias vim='nvim'
