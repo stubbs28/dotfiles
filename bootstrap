@@ -28,6 +28,20 @@ for file in $(find "${DOTFILES}/rcfiles/" -type f); do
 	fi
 done
 
+echo "Install oh-my-zsh"
+if [ -e "${HOME}/.oh-my-zsh" ]; then
+	echo "    oh-my-zsh already installed! Not doing anything."
+else
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
+
+echo "Install stickers.zsh-theme" 
+if [ -e "${HOME}/.oh-my-zsh/themes/stickers.zsh-theme" ]; then
+	echo "    stickers.zsh-theme already installed! Not doing anything."
+else
+	cp configs/stickers.zsh-theme ${HOME}/.oh-my-zsh/themes/stickers.zsh-theme
+fi
+
 echo "Install Vundle..."
 if [ -e "${HOME}/.vim/bundle/Vundle.vim" ]; then
 	echo "    vundle already installed! Not doing anything."

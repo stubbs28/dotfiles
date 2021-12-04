@@ -1,70 +1,35 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Settings
+"
 " Sections:
-"    -> Plugins
 "    -> General
-"    -> VIM user interface
+"    -> VIM User Interface
 "    -> Colors and Fonts
-"    -> Files and backups
-"    -> Text, tab and indent related
-"    -> Visual mode related
-"    -> Moving around, tabs and buffers
-"    -> Editing mappings
-"    -> vimgrep searching and cope displaying
-"    -> Spell checking
+"    -> Files, Backups and Undo
+"    -> Text, Tab and Indent Related
+"    -> Visual Mode Related
+"    -> Moving Around, Tabs, Windows and Buffers
+"    -> Editing Mappings
 "    -> Misc
 "    -> Helper functions
-"    -> Golang
-"    -> Airline
-"    -> NERDTree
-"    -> shellcheck
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugins
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible
-filetype off
-
-" Set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-
-call vundle#begin()
-" Let Vundle manage Vundle
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'fatih/vim-go'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'pgdouyon/vim-evanesco'
-Plugin 'godlygeek/tabular'
-Plugin 'tpope/vim-fugitive'
-
-call vundle#end()
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
 set history=500
-" Enable filetype plugins
-filetype plugin on
-filetype indent on
 " Set to auto read and write
 set autoread
 set autowrite
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
-" needed for GO monorepo
-let $USE_SYSTEM_GO=1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM user interface
+" => VIM User Interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable mouse
 set mouse=a
@@ -138,7 +103,7 @@ colorscheme solarized
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files, backups and undo
+" => Files, Backups and Undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
@@ -147,7 +112,7 @@ set noswapfile
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab and indent related
+" => Text, Tab and Indent Related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Be smart when using tabs ;)
 set smarttab
@@ -170,7 +135,7 @@ autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Visual mode related
+" => Visual Mode Related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
@@ -179,7 +144,7 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs, windows and buffers
+" => Moving Around, Tabs, Windows and Buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /
@@ -218,7 +183,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
+" => Editing Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remap VIM 0 to first non-blank character
 map 0 ^
@@ -233,18 +198,6 @@ endfun
 if has("autocmd")
     autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
 endif
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
-" Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -306,77 +259,3 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Golang
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Quickfix jump shortcuts
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
-map <leader>a :cclose<CR>
-" :GoRun shortcut
-autocmd FileType go nmap <leader>r <Plug>(go-run)
-" :GoTest shortcut
-autocmd FileType go nmap <leader>t <Plug>(go-test)
-autocmd FileType go nmap <leader>tf <Plug>(go-test-func)
-" :GoCoverageToggle shortcut
-autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)
-" :GoAlternate shortcuts
-autocmd FileType go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-autocmd FileType go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-autocmd FileType go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-autocmd FileType go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
-" Make all lists quickfix
-let g:go_list_type = "quickfix"
-" Run :GoImport on save
-let g:go_fmt_command = "goimports"
-" Run :GoMetaLinter on save
-let g:go_metalinter_autosave = 1
-" Set test timeout
-let g:go_test_timeout = '20s'
-" More syntax highlighting
-"let g:go_highlight_types = 1
-"let g:go_highlight_fields = 1
-"let g:go_highlight_functions = 1
-"let g:go_highlight_function_calls = 1
-"let g:go_highlight_operators = 1
-"let g:go_highlight_extra_types = 1
-"let g:go_highlight_build_constraints = 1
-" Run :GoBuild or :GoTestCompile based on the go file
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#test#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
-  endif
-endfunction
-autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Airline
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:airline_theme = 'simple'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#syntastic#enabled = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline_skip_empty_sections = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => NERDTree
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Easy open
-map <leader>nt :NERDTreeToggle<cr>
-" Open on startup
-" autocmd VimEnter * NERDTree
-" Move cursor to main window
-autocmd VimEnter * wincmd p
-" Set window size
-"let g:NERDTreeWinSize = 20
-" Show hidden files
-let NERDTreeShowHidden = 1
-" Set Delimiter
-let g:NERDTreeNodeDelimiter = "\u00a0"
