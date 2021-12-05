@@ -47,10 +47,9 @@ Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
 Plug 'jelera/vim-javascript-syntax'
 Plug 'davidhalter/jedi-vim'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
+Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
 " Required:
 filetype plugin indent on
-
-
