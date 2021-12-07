@@ -53,12 +53,13 @@ for file in $(find "${DOTFILES}/rcfiles/" -type f); do
 		echo "    ${BASENAME} broken link. removing..."
 		unlink "${HOME}/${BASENAME}"
 	fi
-	ln -sT "${file}" "${HOME}/${BASENAME}"
+	ln -s "${file}" "${HOME}/${BASENAME}"
 	echo "    ${BASENAME} linked."
 done
 
-echo "installing vim plugins..."
+echo "installing nvim plugins..."
 nvim +PluginInstall +qall
-echo "   vim plugins installed."
+git config --global core.editor nvim
+echo "   nvim plugins installed."
 
 echo "all done! relog to see changes."
