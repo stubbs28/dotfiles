@@ -48,6 +48,7 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'davidhalter/jedi-vim'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'rust-lang/rust.vim'
+Plug 'rking/ag.vim'
 
 call plug#end()
 

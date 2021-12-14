@@ -1,10 +1,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Golang
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Quickfix jump shortcuts
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
-map <leader>a :cclose<CR>
 " :GoRun shortcut
 autocmd FileType go nmap <leader>r <Plug>(go-run)
 " :GoTest shortcut

@@ -163,6 +163,10 @@ map <leader>ba :bufdo bd<cr>
 " Map buffer navigation shortcuts
 map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
+" Quickfix jump shortcuts
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+map <leader>a :cclose<CR>
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cyyr>
 map <leader>to :tabonly<cr>
