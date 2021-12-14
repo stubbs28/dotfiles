@@ -70,7 +70,6 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(git vi-mode)
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/.cargo/env
 
 # Auto completion
 source <(kubectl completion zsh)
