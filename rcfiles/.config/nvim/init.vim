@@ -5,7 +5,8 @@ let g:config_file_list = [ 'plug.vim',
   \ 'settings.vim',
   \ 'nerdtree.vim',
   \ 'airline.vim',
-  \ 'golang.vim'
+  \ 'golang.vim',
+  \ 'rust-lang.vim'
   \ ]
 
 let g:nvim_config_root = expand('<sfile>:p:h')
