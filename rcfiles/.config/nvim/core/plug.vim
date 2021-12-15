@@ -37,18 +37,16 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Install
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'altercation/vim-colors-solarized'
-Plug 'pgdouyon/vim-evanesco'
-Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
-Plug 'jelera/vim-javascript-syntax'
-Plug 'davidhalter/jedi-vim'
-Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
-Plug 'rust-lang/rust.vim'
-Plug 'rking/ag.vim'
+Plug 'scrooloose/nerdtree' " tree explorer
+Plug 'vim-airline/vim-airline' " status/tab lines
+Plug 'vim-airline/vim-airline-themes' " themes for status/tab lines
+Plug 'altercation/vim-colors-solarized' " solarized color scheme
+Plug 'rking/ag.vim' " silver-seracher in vim
+Plug 'pgdouyon/vim-evanesco' " auto clear search highlighting
+Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'} " requirements file format support
+Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'} " golang development tools
+Plug 'davidhalter/jedi-vim' " python development tools
+Plug 'rust-lang/rust.vim' " rust development tools
 
 call plug#end()
 

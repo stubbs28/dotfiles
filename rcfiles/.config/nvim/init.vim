@@ -5,7 +5,7 @@ let g:config_file_list = [ 'plug.vim',
   \ 'settings.vim',
   \ 'nerdtree.vim',
   \ 'airline.vim',
-  \ 'golang.vim',
+  \ 'vim-go.vim',
   \ 'rust-lang.vim'
   \ ]
 
