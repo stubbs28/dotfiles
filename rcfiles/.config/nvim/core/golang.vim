@@ -1,18 +1,20 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Golang
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" :GoRun shortcut
-autocmd FileType go nmap <leader>r <Plug>(go-run)
-" :GoTest shortcut
-autocmd FileType go nmap <leader>t <Plug>(go-test)
-autocmd FileType go nmap <leader>tf <Plug>(go-test-func)
-" :GoCoverageToggle shortcut
-autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)
-" :GoAlternate shortcuts
-autocmd FileType go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-autocmd FileType go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-autocmd FileType go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-autocmd FileType go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+augroup golang
+	" :GoRun shortcut
+	autocmd FileType go nmap <leader>r <Plug>(go-run)
+	" :GoTest shortcut
+	autocmd FileType go nmap <leader>t <Plug>(go-test)
+	autocmd FileType go nmap <leader>tf <Plug>(go-test-func)
+	" :GoCoverageToggle shortcut
+	autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)
+	" :GoAlternate shortcuts
+	autocmd FileType go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+	autocmd FileType go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+	autocmd FileType go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+	autocmd FileType go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+augroup END
 " Make all lists quickfix
 let g:go_list_type = "quickfix"
 " Run :GoImport on save
@@ -38,5 +40,7 @@ function! s:build_go_files()
     call go#cmd#Build(0)
   endif
 endfunction
-autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+augroup golang
+	autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+augroup END
 
