@@ -54,6 +54,7 @@ Plug 'kyazdani42/nvim-web-devicons' " Extra icons
 Plug 'onsails/lspkind-nvim' " add pictograms to lsp
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " AST-based syntax highlighting 
 Plug 'tami5/lspsaga.nvim', {'branch': 'main'} " neovim LSP nicer UI
+Plug 'mhinz/vim-signify' " git marks next to line numbers
 
 call plug#end()
 
