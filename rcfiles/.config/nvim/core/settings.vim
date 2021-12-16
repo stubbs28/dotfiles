@@ -12,6 +12,9 @@
 "    -> Editing Mappings
 "    -> Misc
 "    -> Helper functions
+"    -> NvimTree
+"    -> Golang
+"    -> Rust
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -263,3 +266,60 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NvimTree
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Easy open
+map <leader>nt :NvimTreeToggle<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Golang
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" :GoRun shortcut
+autocmd FileType go nmap <leader>r <Plug>(go-run)
+" :GoTest shortcut
+autocmd FileType go nmap <leader>t <Plug>(go-test)
+autocmd FileType go nmap <leader>tf <Plug>(go-test-func)
+" :GoCoverageToggle shortcut
+autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)
+" :GoAlternate shortcuts
+autocmd FileType go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+autocmd FileType go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+autocmd FileType go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+autocmd FileType go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+" Make all lists quickfix
+let g:go_list_type = "quickfix"
+" Run :GoImport on save
+let g:go_fmt_command = "goimports"
+" Run :GoMetaLinter on save
+let g:go_metalinter_autosave = 1
+" Set test timeout
+let g:go_test_timeout = '20s'
+" Run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Rust
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:rustfmt_autosave = 1
+augroup rust
+	autocmd!
+	autocmd FileType rust nnoremap <leader>r :make run <cr>
+	autocmd FileType rust nnoremap <leader>t :silent make test  <cr>
+	autocmd FileType rust nnoremap <leader>b :silent make build <cr>
+	autocmd QuickFixCmdPost [^1]* cwindow
+	autocmd QuickFixCmdPost 1* lwindow
+	autocmd VimEnter * cwindow
+augroup END

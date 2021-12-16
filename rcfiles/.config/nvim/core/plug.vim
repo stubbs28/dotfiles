@@ -37,18 +37,22 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Install
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'altercation/vim-colors-solarized'
-Plug 'pgdouyon/vim-evanesco'
-Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
-Plug 'jelera/vim-javascript-syntax'
-Plug 'davidhalter/jedi-vim'
-Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
-Plug 'rust-lang/rust.vim'
-Plug 'rking/ag.vim'
+Plug 'scrooloose/nerdtree' " tree explorer
+Plug 'kyazdani42/nvim-tree.lua' " File tree
+Plug 'nvim-lualine/lualine.nvim' " line at the bottom
+Plug 'altercation/vim-colors-solarized' " solarized color scheme
+Plug 'rking/ag.vim' " silver-seracher in vim
+Plug 'pgdouyon/vim-evanesco' " auto clear search highlighting
+Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'} " requirements file format support
+Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'} " golang development tools
+Plug 'davidhalter/jedi-vim' " python development tools
+Plug 'rust-lang/rust.vim' " rust development tools
+Plug 'neovim/nvim-lspconfig' " Default LSP configuration
+Plug 'nvim-lua/lsp_extensions.nvim' " Additional LSP extension callbacks
+Plug 'tami5/lspsaga.nvim', {'branch': 'main'} " neovim LSP nicer UI
+Plug 'kyazdani42/nvim-web-devicons' " Extra icons
+Plug 'onsails/lspkind-nvim' " add pictograms to lsp
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " AST-based syntax highlighting 
 
 call plug#end()
 
