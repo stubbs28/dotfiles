@@ -40,7 +40,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 Plug 'scrooloose/nerdtree' " tree explorer
 Plug 'kyazdani42/nvim-tree.lua' " File tree
 Plug 'nvim-lualine/lualine.nvim' " line at the bottom
-Plug 'altercation/vim-colors-solarized' " solarized color scheme
+Plug 'Iron-E/nvim-soluarized' " solarized colorscheme
 Plug 'rking/ag.vim' " silver-seracher in vim
 Plug 'pgdouyon/vim-evanesco' " auto clear search highlighting
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'} " requirements file format support

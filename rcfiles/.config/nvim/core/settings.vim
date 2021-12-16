@@ -100,10 +100,11 @@ set colorcolumn=80
 set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
-" Set Colorscheme
-set background=dark
-colorscheme solarized
-
+" Enable 24-bit colors
+set termguicolors
+" set colorscheme
+set bg=dark
+colorscheme soluarized
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, Backups and Undo
