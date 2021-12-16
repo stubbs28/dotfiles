@@ -3,9 +3,10 @@ lua << EOF
 -- Lualine
 require'lualine'.setup{
   options = {
-    theme = 'solarized_dark'
+    theme = 'solarized'
   },
   sections = {
+    lualine_b = { 'branch', { 'diff', colored = false }, 'diagnostics'},
 	lualine_c = { { 'filename', path=1 } },
     lualine_x = {'encoding'},
     lualine_z = {'%3l/%L:%3c'}
