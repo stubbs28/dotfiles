@@ -1,6 +1,6 @@
 #!/bin/bash
 DOTFILES="${HOME}/.local/dotfiles"
-DEPENDENCIES=("zsh" "batcat" "exa" "rg" "nvim" "kitty" "tmux")
+DEPENDENCIES=("zsh" "batcat" "exa" "rg" "nvim" "kitty" "tmux" "rust-analyzer")
 
 if [ "$PWD" != ${DOTFILES} ]; then
 	echo "this script must be run from ${DOTFILES}."
