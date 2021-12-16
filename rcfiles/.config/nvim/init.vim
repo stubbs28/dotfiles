@@ -3,10 +3,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:config_file_list = [ 'plug.vim',
   \ 'settings.vim',
-  \ 'nerdtree.vim',
-  \ 'airline.vim',
-  \ 'vim-go.vim',
-  \ 'rust-lang.vim'
+  \ 'lua.vim'
   \ ]
 
 let g:nvim_config_root = expand('<sfile>:p:h')
