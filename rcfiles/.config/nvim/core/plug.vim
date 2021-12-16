@@ -47,9 +47,9 @@ Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'} " requirements fil
 Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'} " golang development tools
 Plug 'davidhalter/jedi-vim' " python development tools
 Plug 'rust-lang/rust.vim' " rust development tools
+Plug 'simrat39/rust-tools.nvim' " Additional rust tooling for lsp
 Plug 'neovim/nvim-lspconfig' " Default LSP configuration
 Plug 'nvim-lua/lsp_extensions.nvim' " Additional LSP extension callbacks
-Plug 'tami5/lspsaga.nvim', {'branch': 'main'} " neovim LSP nicer UI
 Plug 'kyazdani42/nvim-web-devicons' " Extra icons
 Plug 'onsails/lspkind-nvim' " add pictograms to lsp
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " AST-based syntax highlighting 
