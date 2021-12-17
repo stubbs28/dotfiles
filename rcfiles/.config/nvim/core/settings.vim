@@ -89,6 +89,7 @@ if has("gui_macvim")
     autocmd GUIEnter * set vb t_vb=
 endif
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -105,6 +106,7 @@ set termguicolors
 " set colorscheme
 set bg=dark
 colorscheme soluarized
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, Backups and Undo
@@ -182,9 +184,9 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " show special characters when tabs are used
 if has("unix")
-  set list
-  set listchars=tab:▸\ ,extends:❯,precedes:❮
-  set fillchars+=vert:│
+    set list
+    set listchars=tab:▸\ ,extends:❯,precedes:❮
+    set fillchars+=vert:│
 endif
 " Remap VIM 0 to first non-blank character
 map 0 ^
@@ -290,12 +292,12 @@ let g:go_metalinter_autosave = 1
 let g:go_test_timeout = '20s'
 " Run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#test#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
-  endif
+    let l:file = expand('%')
+    if l:file =~# '^\f\+_test\.go$'
+        call go#test#Test(0, 1)
+    elseif l:file =~# '^\f\+\.go$'
+        call go#cmd#Build(0)
+    endif
 endfunction
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 
@@ -305,11 +307,11 @@ autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:rustfmt_autosave = 1
 augroup rust
-	autocmd!
-	autocmd FileType rust nnoremap <leader>r :make run <cr>
-	autocmd FileType rust nnoremap <leader>t :silent make test  <cr>
-	autocmd FileType rust nnoremap <leader>b :silent make build <cr>
-	autocmd QuickFixCmdPost [^1]* cwindow
-	autocmd QuickFixCmdPost 1* lwindow
-	autocmd VimEnter * cwindow
+    autocmd!
+    autocmd FileType rust nnoremap <leader>r :make run <cr>
+    autocmd FileType rust nnoremap <leader>t :silent make test  <cr>
+    autocmd FileType rust nnoremap <leader>b :silent make build <cr>
+    autocmd QuickFixCmdPost [^1]* cwindow
+    autocmd QuickFixCmdPost 1* lwindow
+    autocmd VimEnter * cwindow
 augroup END
