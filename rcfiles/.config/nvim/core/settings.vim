@@ -282,12 +282,18 @@ autocmd FileType go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 autocmd FileType go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
 autocmd FileType go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 autocmd FileType go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+" Automagically run gopls with gofmumpt on save
+let g:go_fmt_command = "gopls"
+let g:go_gopls_gofumpt=1
+let g:go_def_mapping_enabled = 0 " Disable so LSP can take over
 " Make all lists quickfix
 let g:go_list_type = "quickfix"
 " Run :GoImport on save
 let g:go_fmt_command = "goimports"
 " Run :GoMetaLinter on save
 let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave_enabled = ['all']
+let g:go_jump_to_error = 0
 " Set test timeout
 let g:go_test_timeout = '20s'
 " Run :GoBuild or :GoTestCompile based on the go file

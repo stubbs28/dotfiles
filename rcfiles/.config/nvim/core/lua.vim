@@ -82,6 +82,7 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+-- Attach rust-tools
 local rust_tool_opts = {
     tools = {
       autoSetHints = true,
@@ -98,6 +99,21 @@ local rust_tool_opts = {
     server = {on_attach = on_attach}, -- rust-analyzer options
 }
 require('rust-tools').setup(rust_tool_opts)
+
+-- Attach gopls to any running gopls if it exists
+nvim_lsp.gopls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {'gopls', '--remote=auto'},
+  gopls = {
+    analyses = {
+      unusedparams = true,
+      nilness = true,
+      unusedwrite = true,
+    },
+    staticcheck = true,
+  }
+}
 
 require'lspkind'.init({
   with_text = false,
