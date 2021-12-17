@@ -1,5 +1,12 @@
 #!/bin/bash
 DOTFILES="${HOME}/.local/dotfiles"
+if [ ! -e "${HOME}/nvim-root" ]; then
+	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage 
+	chmod u+x nvim.appimage 
+	sh -c 'nvim.appimage --appimage-extract'
+	mv squashfs-root nvim-root
+fi
+echo "   nvim installed."
 echo "adding rcfiles..."
 for file in $(find "${DOTFILES}/rcfiles/" -type d); do
 	BASENAME=${file#"${DOTFILES}/rcfiles/"}
