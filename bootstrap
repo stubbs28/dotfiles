@@ -22,8 +22,6 @@ for file in $(find "${DOTFILES}/rcfiles/" -type f); do
 	ln -s "${file}" "${HOME}/${BASENAME}"
 	echo "    ${BASENAME} linked."
 done
-echo "installing nvim plugins..."
-nvim +PluginInstall +qall
 git config --global core.editor nvim
 echo "   nvim plugins installed."
 
