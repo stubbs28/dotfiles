@@ -1,39 +1,5 @@
 #!/bin/bash
 DOTFILES="${HOME}/.local/dotfiles"
-DEPENDENCIES=("zsh" "batcat" "exa" "rg" "nvim" "kitty" "tmux" "rust-analyzer")
-
-if [ "$PWD" != ${DOTFILES} ]; then
-	echo "this script must be run from ${DOTFILES}."
-	exit 1;
-else
-	echo "bootstrapping to ${DOTFILES}..."
-fi
-echo
-
-echo "check dependencies..."
-for dep in "${DEPENDENCIES[@]}"; do
-	if ! command -v ${d} &> /dev/null; then
-		missing=1 
-		echo "${dep} not installed." 
-	fi
-done
-if [ -n "${missing}" ]; then
-	echo "please install missing dependencies."
-	exit 1
-fi
-
-if [ ! -e "${HOME}/.oh-my-zsh" ]; then
-echo "installing oh-my-zsh..."
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-fi
-echo "   oh-my-zsh installed."
-
-if [ ! -e "${HOME}/.tmux-themepack" ]; then
-echo "installing tmux-themepack..."
-	git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
-fi
-echo "   tmux-themepack installed."
-
 echo "adding rcfiles..."
 for file in $(find "${DOTFILES}/rcfiles/" -type d); do
 	BASENAME=${file#"${DOTFILES}/rcfiles/"}
@@ -56,7 +22,6 @@ for file in $(find "${DOTFILES}/rcfiles/" -type f); do
 	ln -s "${file}" "${HOME}/${BASENAME}"
 	echo "    ${BASENAME} linked."
 done
-
 echo "installing nvim plugins..."
 nvim +PluginInstall +qall
 git config --global core.editor nvim

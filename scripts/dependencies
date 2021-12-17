@@ -1,0 +1,12 @@
+#!/bin/bash
+if [ ! -e "${HOME}/.oh-my-zsh" ]; then
+echo "installing oh-my-zsh..."
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
+echo "   oh-my-zsh installed."
+
+if [ ! -e "${HOME}/.tmux-themepack" ]; then
+echo "installing tmux-themepack..."
+	git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
+fi
+echo "   tmux-themepack installed."
