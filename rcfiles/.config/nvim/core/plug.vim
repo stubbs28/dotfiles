@@ -55,6 +55,8 @@ Plug 'onsails/lspkind-nvim' " add pictograms to lsp
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " AST-based syntax highlighting 
 Plug 'tami5/lspsaga.nvim', {'branch': 'main'} " neovim LSP nicer UI
 Plug 'mhinz/vim-signify' " git marks next to line numbers
+Plug 'weilbith/nvim-code-action-menu' " Nice code action menu
+Plug 'kosayoda/nvim-lightbulb' " Lightbulb in gutter
 
 call plug#end()
 

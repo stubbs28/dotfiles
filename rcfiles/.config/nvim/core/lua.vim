@@ -39,6 +39,44 @@ require'nvim-tree'.setup {
 -- LSP
 local nvim_lsp = require('lspconfig')
 require'lspsaga'.setup{}
+
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
+
+-- TODO: remove once nvim-code-action-menu is updated
+local function get_line(uri, row)
+  local uv = vim.loop
+  -- load the buffer if this is not a file uri
+  -- Custom language server protocol extensions can result in servers sending URIs with custom schemes. Plugins are able to load these via `BufReadCmd` autocmds.
+  if uri:sub(1, 4) ~= "file" then
+    local bufnr = vim.uri_to_bufnr(uri)
+    vim.fn.bufload(bufnr)
+    return (vim.api.nvim_buf_get_lines(bufnr, row, row + 1, false) or { "" })[1]
+  end
+
+  local filename = vim.uri_to_fname(uri)
+
+  -- use loaded buffers if available
+  if vim.fn.bufloaded(filename) == 1 then
+    local bufnr = vim.fn.bufnr(filename, false)
+    return (vim.api.nvim_buf_get_lines(bufnr, row, row + 1, false) or { "" })[1]
+  end
+
+  local fd = uv.fs_open(filename, "r", 438)
+  -- TODO: what should we do in this case?
+  if not fd then return "" end
+  local stat = uv.fs_fstat(fd)
+  local data = uv.fs_read(fd, stat.size, 0)
+  uv.fs_close(fd)
+
+  local lnum = 0
+  for line in string.gmatch(data, "([^\n]*)\n?") do
+    if lnum == row then return line end
+    lnum = lnum + 1
+  end
+  return ""
+end
+vim.lsp.util.get_line = get_line
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -63,7 +101,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua require("lspsaga.rename").rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', '<leader><CR>', '<cmd>CodeActionMenu<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
