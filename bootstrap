@@ -2,9 +2,9 @@
 DOTFILES="${HOME}/.local/dotfiles"
 if [ ! -e "${HOME}/nvim-root" ]; then
 	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage 
-	chmod u+x nvim.appimage 
-	sh -c 'nvim.appimage --appimage-extract'
-	mv squashfs-root nvim-root
+	chmod u+x "${HOME}/nvim.appimage"
+	sh -c '"${HOME}/nvim.appimage" --appimage-extract'
+	mv "${HOME}/squashfs-root" "${HOME}/nvim-root"
 fi
 echo "   nvim installed."
 echo "adding rcfiles..."
