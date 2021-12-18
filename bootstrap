@@ -30,7 +30,7 @@ for file in $(find "${DOTFILES}/rcfiles/" -type f); do
 	ln -s "${file}" "${HOME}/${BASENAME}"
 	echo "    ${BASENAME} linked."
 done
-git config --global core.editor nvim
+git config --global core.editor "${HOME}/nvim-root/AppRun"
 echo "   nvim plugins installed."
 
 echo "all done! relog to see changes."
