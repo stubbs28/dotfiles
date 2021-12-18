@@ -5,6 +5,7 @@ if [ ! -e "${HOME}/nvim-root" ]; then
 	chmod u+x "${HOME}/nvim.appimage"
 	sh -c '"${HOME}/nvim.appimage" --appimage-extract'
 	mv "${HOME}/squashfs-root" "${HOME}/nvim-root"
+	rm "${HOME}/nvim.appimage"
 fi
 echo "   nvim installed."
 echo "adding rcfiles..."
