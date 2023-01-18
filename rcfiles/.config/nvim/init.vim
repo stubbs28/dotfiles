@@ -1,10 +1,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Init
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:config_file_list = [ 'plug.vim',
-  \ 'settings.vim',
-  \ 'lua.vim'
-  \ ]
+let g:config_file_list = [ 'plug.vim', 'settings.vim', 'lua.vim' ]
 
 let g:nvim_config_root = expand('<sfile>:p:h')
 for s:fname in g:config_file_list

@@ -69,17 +69,16 @@ HIST_STAMPS="yyyy-mm-dd"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git vi-mode)
 
-export PATH=${HOME}/nvim-root:$PATH
-
+# export PATH=${HOME}/nvim-root:$PATH
+export TERM=xterm-256color
 source $ZSH/oh-my-zsh.sh
 
 # Auto completion
-source <(kubectl completion zsh)
+# source <(kubectl completion zsh)
 
 # remap tools
-alias bat='batcat'
-alias cat='bat'
-alias ls='exa'
-alias grep='rg'
-alias nvim='AppRun'
+# alias bat='batcat'
+# alias cat='bat'
+# alias ls='exa'
+# alias grep='rg'
 alias vim='nvim'

@@ -1,13 +1,5 @@
 #!/bin/bash
 DOTFILES="${HOME}/.local/dotfiles"
-if [ ! -e "${HOME}/nvim-root" ]; then
-	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage 
-	chmod u+x "${HOME}/nvim.appimage"
-	sh -c '"${HOME}/nvim.appimage" --appimage-extract'
-	mv "${HOME}/squashfs-root" "${HOME}/nvim-root"
-	rm "${HOME}/nvim.appimage"
-fi
-echo "   nvim installed."
 echo "adding rcfiles..."
 for file in $(find "${DOTFILES}/rcfiles/" -type d); do
 	BASENAME=${file#"${DOTFILES}/rcfiles/"}
@@ -30,7 +22,4 @@ for file in $(find "${DOTFILES}/rcfiles/" -type f); do
 	ln -s "${file}" "${HOME}/${BASENAME}"
 	echo "    ${BASENAME} linked."
 done
-git config --global core.editor "${HOME}/nvim-root/AppRun"
-echo "   nvim plugins installed."
-
 echo "all done! relog to see changes."
