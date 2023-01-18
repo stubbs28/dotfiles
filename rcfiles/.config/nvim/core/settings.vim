@@ -1,3 +1,4 @@
+let mapleader = ","
 colorscheme soluarized
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -36,12 +37,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" show special characters when tabs are used
-"if has("unix")
-"    set list
-"    set listchars=tab:▸\ ,extends:❯,precedes:❮
-"    set fillchars+=vert:│
-"endif
 " Remap VIM 0 to first non-blank character
 map 0 ^
 " Delete trailing white space on save, useful for some filetypes ;)
