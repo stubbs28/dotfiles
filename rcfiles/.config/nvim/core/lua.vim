@@ -105,9 +105,14 @@ function let_g(prefix, opts)
 end
 
 let_g {
+	mapleader = ',', -- use comma as leader
 	loaded_netrw = 1, -- disable netrw
 	loaded_netrwPlugin = 1,
 }
+-------------------------------------------------------------------------------
+-- => nvim-soluarized
+-------------------------------------------------------------------------------
+vim.api.nvim_command 'colorscheme soluarized'
 
 -------------------------------------------------------------------------------
 -- => lualine
