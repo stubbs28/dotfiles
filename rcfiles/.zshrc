@@ -69,7 +69,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git vi-mode)
 
-# export PATH=${HOME}/nvim-root:$PATH
+export PATH=${HOME}/neovim/build/bin:$PATH
 export TERM=xterm-256color
 source $ZSH/oh-my-zsh.sh
 

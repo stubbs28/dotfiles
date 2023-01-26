@@ -244,6 +244,19 @@ cmp.setup {
 }
 
 -------------------------------------------------------------------------------
+-- => UltiSnips
+-------------------------------------------------------------------------------
+vim.api.nvim_set_keymap('i', '<c-u>', '<Plug>(ultisnips_expand)', {})
+let_g('UltiSnips', {
+	ExpandTrigger            = "<Plug>(ultisnips_expand)",
+	JumpForwardTrigger       = "<Plug>(ultisnips_jump_forward)",
+	JumpBackwardTrigger      = "<Plug>(ultisnips_jump_backward)",
+	ListSnippets             = "<c-x><c-s>",
+	RemoveSelectModeMappings = 0,
+})
+
+
+-------------------------------------------------------------------------------
 -- => lspconfig
 -------------------------------------------------------------------------------
 local nvim_lsp = require('lspconfig')
