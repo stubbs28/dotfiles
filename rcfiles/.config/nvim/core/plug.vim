@@ -66,6 +66,7 @@ Plug 'nvim-tree/nvim-web-devicons' " Extra icons
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " AST-based syntax highlighting 
 Plug 'weilbith/nvim-code-action-menu' " Nice code action menu
 Plug 'kosayoda/nvim-lightbulb' " Lightbulb in gutter
+Plug 'RRethy/vim-illuminate' " highlight similar words
 
 " LSP and language features
 Plug 'neovim/nvim-lspconfig' " Default LSP configuration

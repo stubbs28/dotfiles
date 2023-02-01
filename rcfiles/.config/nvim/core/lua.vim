@@ -152,6 +152,9 @@ require('nvim-tree').setup({
         { key = "v", cb = tree_cb("vsplit") },
       }
     }
+  },
+  git = {
+    ignore = false,
   }
 })
 
