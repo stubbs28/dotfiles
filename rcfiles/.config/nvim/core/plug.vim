@@ -48,6 +48,7 @@ Plug 'quangnguyen30192/cmp-nvim-ultisnips' " cmp snippets
 Plug 'SirVer/ultisnips' " snippet engine
 
 " Filetype-specific
+Plug 'sheerun/vim-polyglot' " collection of language packs
 Plug 'direnv/direnv.vim' " integrate direnv and nvim
 Plug 'fatih/vim-go' " golang development tools
 Plug 'hynek/vim-python-pep8-indent' " python file format support
