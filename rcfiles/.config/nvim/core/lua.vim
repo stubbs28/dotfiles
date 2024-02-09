@@ -2,6 +2,8 @@ lua << EOF
 -------------------------------------------------------------------------------
 -- => General
 -------------------------------------------------------------------------------
+-- vim.lsp.set_log_level("debug")
+
 if vim.env.VIM_PATH then
 	vim.env.PATH = vim.env.VIM_PATH
 end
@@ -285,15 +287,15 @@ function setup_lsp(server, lsp_opts)
 
 		-- Show hints for every parameter, but don't need to report the
 		-- signature again since it's easily accessible.
-		lsp_signature.on_attach({
-			bind = true,
-			floating_window = false,
-			hint_enable = true,
-			always_trigger = true,
-		}, bufnr)
+		-- lsp_signature.on_attach({
+		-- 	bind = true,
+		-- 	floating_window = false,
+		-- 	hint_enable = true,
+		-- 	always_trigger = true,
+		-- }, bufnr)
 
 		buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-		local opts = { noremap = true, silent = true }
+		local opts = { noremap = true, silent = true}
 
 		-- Keybindings
 		--  K            Documentation
