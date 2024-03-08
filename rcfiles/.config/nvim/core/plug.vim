@@ -60,7 +60,7 @@ Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'} " requirements fil
 Plug 'mhinz/vim-signify' " git marks next to line numbers
 
 " Look and feel
-Plug 'Iron-E/nvim-soluarized' " solarized colorscheme
+Plug 'shaunsingh/solarized.nvim' " solarized colorscheme
 Plug 'nvim-lualine/lualine.nvim' " line at the bottom
 Plug 'pgdouyon/vim-evanesco' " auto clear search highlighting
 Plug 'nvim-tree/nvim-web-devicons' " Extra icons
