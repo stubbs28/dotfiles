@@ -48,7 +48,6 @@ Plug 'quangnguyen30192/cmp-nvim-ultisnips' " cmp snippets
 Plug 'SirVer/ultisnips' " snippet engine
 
 " Filetype-specific
-Plug 'direnv/direnv.vim' " integrate direnv and nvim
 Plug 'fatih/vim-go' " golang development tools
 Plug 'hynek/vim-python-pep8-indent' " python file format support
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " markdown file format support

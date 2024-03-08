@@ -137,26 +137,25 @@ require('lualine').setup({
 
 
 -------------------------------------------------------------------------------
+-- => nvim-treesitter
+-------------------------------------------------------------------------------
+require('nvim-treesitter').setup({
+  ensure_installed = {"lua", "vim", "help", "go", "python", "markdown"}
+})
+
+
+-------------------------------------------------------------------------------
 -- => nvim-tree
 -------------------------------------------------------------------------------
-local tree_cb = require('nvim-tree.config').nvim_tree_callback
 require('nvim-tree').setup({
-   diagnostics = {
+  diagnostics = {
     enable = true,
-  },
-  view = {
-    mappings = {
-      list = {
-        { key = "<C-s>", cb = tree_cb("system_open") },
-        { key = "s", cb = tree_cb("split") },
-        { key = "v", cb = tree_cb("vsplit") },
-      }
-    }
   },
   git = {
     ignore = false,
   }
 })
+
 
 -------------------------------------------------------------------------------
 -- => nvim-cmp

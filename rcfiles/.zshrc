@@ -69,7 +69,9 @@ HIST_STAMPS="yyyy-mm-dd"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git vi-mode)
 
-export PATH=${HOME}/neovim/build/bin:$PATH
+export PATH=$PATH:${HOME}/bin/squashfs-root/usr/bin
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:${HOME}/.local/bin
 export TERM=xterm-256color
 source $ZSH/oh-my-zsh.sh
 
