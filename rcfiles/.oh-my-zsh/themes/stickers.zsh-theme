@@ -69,8 +69,8 @@ prompt_end() {
 prompt_status() {
   local -a symbols
 
-  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}✘"
-  [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡"
+  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}⌧"  #x
+  [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}#"
   [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙"
 
   prompt_segment black default "╭─$symbols"
@@ -143,7 +143,7 @@ prompt_git() {
     zstyle ':vcs_info:*' get-revision true
     if [[ "$(git config --get oh-my-zsh.hide-status 2>/dev/null)" = 1 ]]; then
       zstyle ':vcs_info:*' check-for-changes true
-      zstyle ':vcs_info:*' stagedstr '✚'
+      zstyle ':vcs_info:*' stagedstr '+'
       zstyle ':vcs_info:*' unstagedstr '±'
 	fi
     zstyle ':vcs_info:*' formats ' %u%c'
@@ -154,7 +154,7 @@ prompt_git() {
 }
 
 prompt_cmd() {
-  prompt_segment black default "╰─"
+  prompt_segment black default "╰─"
 }
 
 ## Main prompt
