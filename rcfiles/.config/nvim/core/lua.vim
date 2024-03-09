@@ -114,18 +114,23 @@ let_g {
 -------------------------------------------------------------------------------
 -- => NeoSolarized
 -------------------------------------------------------------------------------
-require('NeoSolarized').setup({
-  style = "dark"
-})
-
-vim.cmd [[ colorscheme NeoSolarized ]]
-
+-- require('NeoSolarized').setup({
+--   style = "dark",
+--   transparent = false,
+-- })
+-- 
+-- vim.cmd [[ colorscheme NeoSolarized ]]
+-- 
+-------------------------------------------------------------------------------
+-- => solarized
+-------------------------------------------------------------------------------
+vim.cmd('colorscheme solarized')
 -------------------------------------------------------------------------------
 -- => lualine
 -------------------------------------------------------------------------------
 require('lualine').setup({
   options = {
-    theme = 'NeoSolarized'
+    theme = 'solarized'
   },
   sections = {
     lualine_b = { 'branch', { 'diff', colored = false }, 'diagnostics'},
@@ -147,9 +152,6 @@ require('lualine').setup({
 -------------------------------------------------------------------------------
 require('nvim-treesitter').setup({
   ensure_installed = {"lua", "vim", "go", "python", "markdown"},
-  highlight = {
-    enable = true
-  }
 })
 
 -------------------------------------------------------------------------------
