@@ -49,7 +49,6 @@ Plug 'SirVer/ultisnips' " snippet engine
 
 " Filetype-specific
 Plug 'sheerun/vim-polyglot' " collection of language packs
-Plug 'direnv/direnv.vim' " integrate direnv and nvim
 Plug 'fatih/vim-go' " golang development tools
 Plug 'hynek/vim-python-pep8-indent' " python file format support
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " markdown file format support
@@ -60,7 +59,7 @@ Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'} " requirements fil
 Plug 'mhinz/vim-signify' " git marks next to line numbers
 
 " Look and feel
-Plug 'shaunsingh/solarized.nvim' " solarized colorscheme
+Plug 'Tsuzat/NeoSolarized.nvim', {'branch': 'master'}
 Plug 'nvim-lualine/lualine.nvim' " line at the bottom
 Plug 'pgdouyon/vim-evanesco' " auto clear search highlighting
 Plug 'nvim-tree/nvim-web-devicons' " Extra icons
