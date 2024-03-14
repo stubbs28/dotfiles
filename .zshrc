@@ -75,10 +75,3 @@ source $ZSH/oh-my-zsh.sh
 
 # Auto completion
 # source <(kubectl completion zsh)
-
-# remap tools
-# alias bat='batcat'
-# alias cat='bat'
-# alias ls='exa'
-# alias grep='rg'
-alias vim='nvim'
