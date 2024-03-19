@@ -37,7 +37,7 @@ prompt_kube() {
 }
 
 prompt_cmd() {
-  prompt_segment black default "╰󰁔"
+  prompt_segment black default "╰─"
 }
 
 ## Main prompt
