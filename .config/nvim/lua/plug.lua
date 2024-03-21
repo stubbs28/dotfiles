@@ -20,7 +20,7 @@ Plug('iamcco/markdown-preview.nvim', {		-- markdown file format support
 	['for'] = {'markdown', 'vim-plug'}
 })
 Plug('solarnz/thrift.vim', { 			-- thrift file format support
-	['for'] = 'thrift' 
+	['for'] = 'thrift'
 })
 Plug('raimon49/requirements.txt.vim', {		-- requirements file format support
 	['for'] = 'requirements'
@@ -34,7 +34,7 @@ Plug 'ishan9299/nvim-solarized-lua'		-- Solarized theme
 Plug 'nvim-lualine/lualine.nvim' 		-- line at the bottom
 Plug 'pgdouyon/vim-evanesco' 			-- auto clear search highlighting
 Plug 'nvim-tree/nvim-web-devicons' 		-- Extra icons
-Plug('nvim-treesitter/nvim-treesitter', {	-- AST-based syntax highlighting 
+Plug('nvim-treesitter/nvim-treesitter', {	-- AST-based syntax highlighting
   ['do'] = function()
     vim.cmd("TSUpdate")
   end
@@ -49,6 +49,7 @@ Plug 'vladdoster/remember.nvim'			-- open last
 Plug 'neovim/nvim-lspconfig'			-- Default LSP configuration
 Plug 'onsails/lspkind-nvim'			-- add pictograms to lsp
 Plug 'nvimdev/lspsaga.nvim'			-- neovim LSP nicer UI
+Plug 'j-hui/fidget.nvim'			-- status indicator
 Plug 'ray-x/lsp_signature.nvim'
 
 -- Navigation and window management

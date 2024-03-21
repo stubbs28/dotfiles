@@ -2,8 +2,8 @@ vim.opt.compatible  = false -- no backwards compatibility with vi
 vim.opt.backup      = false -- don't backup edited files
 vim.opt.writebackup = true -- but temporarily backup before overwiting
 vim.opt.backspace   = {    -- sane backspace handling
-  'indent', 
-  'eol', 
+  'indent',
+  'eol',
   'start'
 }
 vim.opt.colorcolumn = '80'   -- Highlight column 80
@@ -41,8 +41,8 @@ vim.opt.splitright = true
 vim.opt.foldmethod = 'marker' -- don't fold unless there are markers
 vim.opt.list = true -- Show tabs and trailing spaces.
 vim.opt.listchars = {
-  tab = '▸ ', 
-  extends = '❯', 
+  tab = '▸ ',
+  extends = '❯',
   precedes = '❮'
 }
 vim.opt.fillchars = {
@@ -50,10 +50,10 @@ vim.opt.fillchars = {
 }
 vim.opt.wildignore = { -- Patterns to ignore in wildcard expansions.
   '*/cabal-dev',
-  '*/dist', 
-  '*.o', 
-  '*.class', 
-  '*.pyc', 
+  '*/dist',
+  '*.o',
+  '*.class',
+  '*.pyc',
   '*.hi',
 }
 vim.opt.completeopt = {

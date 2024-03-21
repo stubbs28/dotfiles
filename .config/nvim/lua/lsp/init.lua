@@ -3,37 +3,28 @@ local lsp_configs = {
 }
 
 local nvim_lsp = require('lspconfig')
-local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lsp_signature = require('lsp_signature')
+local on_attach = function(client, bufnr)
+	local opts = { noremap = true, silent = true, buffer=bufnr }
+
+	-- Enable completion trigered by <c-x><c-o>
+	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+	--  K            Documentation
+	vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+	--  <leader>d    Go to definition
+	vim.keymap.set('n', '<leader>d', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+	--  <leader>rn   Rename
+	vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+	--  <leader>ca   Code action
+	vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+	--  <leader>f    Format
+	vim.keymap.set('n', '<leader>f', '<cmd>lua vim.lsp.buf.format({async = true})<CR>', opts)
+end
 
 function setup_lsp(server, lsp_opts)
-	lsp_opts.on_attach = function(client, bufnr)
-		local function buf_set_keymap(...)
-			vim.api.nvim_buf_set_keymap(bufnr, ...)
-		end
-
-		local function buf_set_option(...)
-			vim.api.nvim_buf_set_option(bufnr, ...)
-		end
-
-		-- Enable completion trigered by <c-x><c-o>
-		buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-		local opts = { noremap = true, silent = true}
-
-		-- Keybindings
-		--  K            Documentation
-		--  <leader>d    Go to definition
-		--  <leader>rn   Rename
-		--  <leader>ca   Code action
-		--  <leader>f    Format
-
-		buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-		buf_set_keymap('n', '<leader>d', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-		buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-		buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-		buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.format({async = true})<CR>', opts)
-	end
-
+	lsp_opts.on_attach = on_attach
 	lsp_opts.capabilities = lsp_capabilities
 	lsp_opts.flags = {
 		-- Don't spam LSP with changes. Wait a second between updates.

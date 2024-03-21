@@ -1,6 +1,6 @@
--- vim.api.nvim_create_autocmd({ "BufReadPost" }, {
---     pattern = { "*" },
---     callback = function()
---         vim.api.nvim_exec('silent! normal! g`"zv', false)
---     end,
--- })
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*.go",
+	callback = function(args)
+		goFormatAndImports(60000)
+	end,
+})

@@ -1,5 +1,6 @@
 local config_modules = {
   '_close-buffers',
+  '_fidget',
   '_lualine',
   '_markdown-preview',
   '_nvim-cmp',

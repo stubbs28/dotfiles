@@ -10,3 +10,5 @@ vim.keymap.set('n', '<leader>h', '<cmd>bprevious<cr>', {})
 vim.keymap.set('n', '<C-n>', '<cmd>cnext<cr>', {})
 vim.keymap.set('n', '<C-m>', '<cmd>cprevious<cr>', {})
 vim.keymap.set('n', '<leader>a', '<cmd>cclose<cr>', {})
+-- send errors to quickfix list
+vim.keymap.set('n', '<leader>q', '<cmd>lua vim.diagnostic.setqflist()<CR>', {})
