@@ -1,6 +1,3 @@
--- if vim.env.VIM_GO_BIN_PATH then
--- 	vim.g.go_bin_path = vim.env.VIM_GO_BIN_PATH
--- end
 -- LSP will run gopls.
 vim.g.go_gopls_enabled = 0
 -- LSP will provide go-to-def.
