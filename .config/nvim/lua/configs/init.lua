@@ -7,8 +7,8 @@ local config_modules = {
   '_nvim-tree',
   '_nvim-treesitter',
   '_remember',
+  '_snippy',
   '_trim',
-  '_ultisnips',
   '_vim-go'
 }
 

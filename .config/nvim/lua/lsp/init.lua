@@ -4,7 +4,6 @@ local lsp_configs = {
 
 local nvim_lsp = require('lspconfig')
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-local lsp_signature = require('lsp_signature')
 local on_attach = function(client, bufnr)
 	local opts = { noremap = true, silent = true, buffer=bufnr }
 

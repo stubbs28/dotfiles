@@ -24,62 +24,26 @@ cmp.setup {
 	},
 	snippet = {
 		expand = function(args)
-			vim.fn["UltiSnips#Anon"](args.body)
+			require('snippy').expand_snippet(args.body)
 		end,
 	},
 	mapping = {
-		-- Ctrl-u/d: scroll docs of completion item if available.
-		['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-		['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-
-		-- tab: If completion menu is visible and nothing has been selected,
-		-- select first item. If something is selected, start completion with that.
-		-- If in the middle of the completion, jump to next snippet position.
-
-		-- Tab/Shift-Tab:
-		-- If completion menu is not visible,
-		--  1. if we're in the middle of a snippet, move forwards/backwards
-		--  2. Otherwise use regular key behavior
-		--
-		-- If completion menu is visible and,
-		--  1. no item is selected, select the first/last one
-		--  2. an item is selected, start completion with it
-		['<Tab>'] = cmp.mapping({
-			i = handleTab,
-			s = handleTab,
-		}),
-		['<S-Tab>'] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			elseif vim.fn['UltiSnips#CanJumpBackwards']() == 1 then
-				feedkey("<Plug>(ultisnips_jump_backward)", "")
-			else
-				fallback()
-			end
-		end, {'i', 's'}),
-
-		-- Ctrl-Space: force completion
-		['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-
-		-- Ctr-e: cancel completion
-		['<C-e>'] = cmp.mapping({
-			i = cmp.mapping.abort(),
-			c = cmp.mapping.close(),
-		}),
-
-		-- Enter: confirm completion
-		['<CR>'] = cmp.mapping.confirm({select = false}),
+		["<C-b>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-e>"] = cmp.mapping.abort(),
+		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	},
 	sources = cmp.config.sources({
 		{name = 'nvim_lsp'},
-		{name = 'ultisnips'},
-	}, {
-		{name = 'path'},
+		{name = 'snippy'},
 		{name = 'buffer'},
+		{name = 'path'},
 		{name = 'tmux'},
 	}),
 	experimental = {
-		ghost_text  = true,
-	}
+		ghost_text = {
+			hl_group = "LspCodeLens",
+		},
+	},
 }
-

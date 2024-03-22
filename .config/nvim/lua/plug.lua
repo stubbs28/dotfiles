@@ -6,10 +6,9 @@ Plug 'hrsh7th/cmp-cmdline'			-- completion for vim's commandline
 Plug 'hrsh7th/cmp-nvim-lsp'			-- completion for nvim-lsp
 Plug 'hrsh7th/cmp-path'				-- completion for filesystem paths
 Plug 'hrsh7th/nvim-cmp'				-- completion engine plugin
-Plug 'cappyzawa/trim.nvim'			-- clean up trailing whitespace
 Plug 'honza/vim-snippets' 			-- vim snippets
-Plug 'quangnguyen30192/cmp-nvim-ultisnips'	-- cmp snippets
-Plug 'SirVer/ultisnips' 			-- snippet engine
+Plug 'dcampos/cmp-snippy'			-- use snippets with cmp
+Plug 'dcampos/nvim-snippy'			-- snippets manager
 
 -- Filetype-specific
 Plug 'sheerun/vim-polyglot'			-- collection of language packs
@@ -30,6 +29,7 @@ Plug('raimon49/requirements.txt.vim', {		-- requirements file format support
 Plug 'mhinz/vim-signify' 			-- git marks next to line numbers
 
 -- Look and feel
+Plug 'cappyzawa/trim.nvim'			-- clean up trailing whitespace
 Plug 'ishan9299/nvim-solarized-lua'		-- Solarized theme
 Plug 'nvim-lualine/lualine.nvim' 		-- line at the bottom
 Plug 'pgdouyon/vim-evanesco' 			-- auto clear search highlighting
